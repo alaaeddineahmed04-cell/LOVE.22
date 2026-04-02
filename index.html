@@ -8,9 +8,9 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(to bottom, #ffc0cb, #ff99cc);
+    background: linear-gradient(135deg, #ff9a9e, #fecfef, #ffc3a0);
     overflow: hidden;
-    font-family: 'Segoe Script', cursive;
+    font-family: 'Segoe UI', cursive;
 }
 
 /* الحاوية */
@@ -27,32 +27,31 @@ body {
 /* العنوان */
 h1 {
     color: white;
-    font-size: 60px;
+    font-size: 70px;
     text-align: center;
+    letter-spacing: 3px;
     animation: float 3s ease-in-out infinite, glow 2s infinite alternate;
 }
 
-/* حركة */
 @keyframes float {
     0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
+    50% { transform: translateY(-20px); }
     100% { transform: translateY(0px); }
 }
 
-/* إضاءة */
 @keyframes glow {
     from { text-shadow: 0 0 10px white; }
-    to { text-shadow: 0 0 30px white, 0 0 40px #ff69b4; }
+    to { text-shadow: 0 0 40px white, 0 0 60px #ff4da6; }
 }
 
 /* الرسالة */
 .message {
     color: white;
     text-align: center;
-    max-width: 600px;
-    font-size: 20px;
+    max-width: 700px;
+    font-size: 22px;
     margin-top: 20px;
-    line-height: 1.8;
+    line-height: 1.9;
     opacity: 0;
     animation: fadeIn 3s forwards 2s;
 }
@@ -61,15 +60,28 @@ h1 {
     to { opacity: 1; }
 }
 
-/* زر الموسيقى */
+/* الدبدوب */
+.bear {
+    position: absolute;
+    font-size: 40px;
+    animation: floatBear 4s infinite ease-in-out;
+}
+
+@keyframes floatBear {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+/* زر */
 button {
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
     background: white;
-    color: #ff69b4;
+    color: #ff4da6;
     font-size: 18px;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
 }
 
@@ -91,20 +103,27 @@ button {
 <body>
 
 <div class="container">
-    <h1>ILOVE YOU NARIMAN</h1>
+
+    <!-- Bubu & Dudu -->
+    <div class="bear" style="left:10%; top:20%;">🧸</div>
+    <div class="bear" style="right:10%; bottom:20%;">🐻</div>
+
+    <h1>💖 I LOVE YOU NARIMAN 💖</h1>
 
     <div class="message">
         حبيبتي نريمان 💗<br><br>
-        أنا أحبك كثيرًا... أنتِ ملاذي، ودفئي، وحياتي التي لا تكتمل إلا بكِ.<br>
-        وجودك يجعل كل شيء أجمل، وكل لحظة بقربك هي حياة كاملة.<br><br>
+        أحبك كثيرًا… أنتِ ملاذي وأماني، أنتِ حياتي وكل ما أملك.<br>
+        معك فقط أشعر أن العالم جميل، وأن قلبي وجد مكانه الحقيقي.<br><br>
 
         يا نريمان...<br>
-        أنتِ النور الذي يضيء طريقي،<br>
-        وأنتِ الحلم الذي لا أريد الاستيقاظ منه.<br>
-        أحبك بعدد دقات قلبي، وبعدد أنفاسي... بل أكثر 💞
+        أنتِ قصيدتي التي لا تنتهي،<br>
+        وأنتِ الحلم الذي أعيشه كل يوم.<br>
+        أحبك بعدد النجوم في السماء،<br>
+        وبعدد نبضات قلبي 💞
     </div>
 
     <button onclick="playMusic()">تشغيل الموسيقى 🎵</button>
+
 </div>
 
 <audio id="music" loop>
@@ -118,17 +137,25 @@ function createFlower() {
     flower.innerHTML = "❀";
 
     flower.style.left = Math.random() * 100 + "vw";
-    flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+    flower.style.animationDuration = (4 + Math.random() * 6) + "s";
     flower.style.fontSize = (10 + Math.random() * 20) + "px";
 
     document.body.appendChild(flower);
 
     setTimeout(() => {
         flower.remove();
-    }, 8000);
+    }, 9000);
 }
 
-setInterval(createFlower, 300);
+setInterval(createFlower, 400);
+
+function playMusic() {
+    document.getElementById("music").play();
+}
+</script>
+
+</body>
+</html>
 
 function playMusic() {
     document.getElementById("music").play();
