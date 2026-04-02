@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Nariman</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #ffc0cb, #ff99cc);
+    overflow: hidden;
+    font-family: 'Segoe Script', cursive;
+}
+
+/* الحاوية */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* العنوان */
+h1 {
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    animation: float 3s ease-in-out infinite, glow 2s infinite alternate;
+}
+
+/* حركة */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* إضاءة */
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 30px white, 0 0 40px #ff69b4; }
+}
+
+/* الرسالة */
+.message {
+    color: white;
+    text-align: center;
+    max-width: 600px;
+    font-size: 20px;
+    margin-top: 20px;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeIn 3s forwards 2s;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* زر الموسيقى */
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: white;
+    color: #ff69b4;
+    font-size: 18px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* الورود */
+.flower {
+    position: absolute;
+    color: white;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh); opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0; }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h1>ILOVE YOU NARIMAN</h1>
+
+    <div class="message">
+        حبيبتي نريمان 💗<br><br>
+        أنا أحبك كثيرًا... أنتِ ملاذي، ودفئي، وحياتي التي لا تكتمل إلا بكِ.<br>
+        وجودك يجعل كل شيء أجمل، وكل لحظة بقربك هي حياة كاملة.<br><br>
+
+        يا نريمان...<br>
+        أنتِ النور الذي يضيء طريقي،<br>
+        وأنتِ الحلم الذي لا أريد الاستيقاظ منه.<br>
+        أحبك بعدد دقات قلبي، وبعدد أنفاسي... بل أكثر 💞
+    </div>
+
+    <button onclick="playMusic()">تشغيل الموسيقى 🎵</button>
+</div>
+
+<audio id="music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<script>
+function createFlower() {
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
+    flower.innerHTML = "❀";
+
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = (3 + Math.random() * 5) + "s";
+    flower.style.fontSize = (10 + Math.random() * 20) + "px";
+
+    document.body.appendChild(flower);
+
+    setTimeout(() => {
+        flower.remove();
+    }, 8000);
+}
+
+setInterval(createFlower, 300);
+
+function playMusic() {
+    document.getElementById("music").play();
+}
+</script>
+
+</body>
+</html>
